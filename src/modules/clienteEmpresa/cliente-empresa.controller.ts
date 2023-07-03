@@ -39,4 +39,19 @@ export class ClienteEmpresaController {
       handleError(res, error);
     }
   };
+
+  deleteByCompanyId = async (
+    req: Request<{ clienteEmpresaId: string }, {}, {}, {}>,
+    res: Response
+  ) => {
+    try {
+      const { clienteEmpresaId } = req.params;
+
+      await this.clienteEmpresaService.delete(clienteEmpresaId);
+
+      res.status(204).json();
+    } catch (error) {
+      handleError(res, error);
+    }
+  };
 }

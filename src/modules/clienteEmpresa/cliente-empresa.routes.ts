@@ -7,5 +7,6 @@ const clienteEmpresaRouter = Router();
 
 clienteEmpresaRouter.post("/clientes", auth, clienteEmpresaController.create);
 clienteEmpresaRouter.get("/clientes/:empresaId", auth, clienteEmpresaController.getAllByCompanyId);
+clienteEmpresaRouter.delete("/clientes/:clienteEmpresaId", auth, clienteEmpresaController.deleteByCompanyId);
 
 export { clienteEmpresaRouter };

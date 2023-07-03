@@ -123,6 +123,16 @@ export class ClienteEmpresaService {
       }
     });
   }
+
+  async delete(clienteEmpresaId: string) {
+    const clienteEmpresa = await prisma.clienteEmpresa.findUnique({ where: { id: clienteEmpresaId } });
+
+    if (!clienteEmpresa) {
+      throw new NotFoundError("cliente não existe.");
+    }
+
+    await prisma.clienteEmpresa.delete({ where: { id: clienteEmpresaId } });
+  }
 }
 
 const getDaysDifferenceBetweenDates = (
@@ -136,3 +146,5 @@ const getDaysDifferenceBetweenDates = (
 
   return diffInDays;
 };
+
+
